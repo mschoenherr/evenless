@@ -1,9 +1,5 @@
 # evenless
-### _Your Name <your.name@example.com>_
 
-This is a project to do ... something.
+This is an experiment in writing an MUA using notmuch.
 
-## License
-
-Specify license here
 
