@@ -32,16 +32,30 @@ executes the body." ; possibly allow definition of functions of arity 0
     (reverse (pluck-pairs () even-list))))
 
 (define-nm-command search (result) ; to be written
-  (princ result))
+  (mapcar #'list-to-alist result))
 
 (define-nm-command show (result) ; to be written
   (princ result))
 
-(define-application-frame evenless-app ()
-  ()
+(define-application-frame evenless ()
+  ((search-results :initform nil :accessor search-results))
   (:panes
-   (interactor :interactor
-	       :height 400
-	       :width 600))
+   (search-results :application
+		   :display-function 'display-search-results
+		   :height 400
+		   :width 600)
+   (prompt :interactor
+	   :height 100
+	   :width 600))
   (:layouts
-   (default-layout interactor)))
+   (default-layout (vertically ()
+		     search-results
+		     prompt))))
+
+(defun display-search-results (frame pane)
+  "Renders the search results on the pane."
+  (let ((search-results (search-results frame)))
+    (format pane "~{~a~%~}" search-results)))
+
+(define-evenless-command (search-mail :name t) ((search-string 'string))
+  (setf (search-results *application-frame*) (nm-search search-string)))
