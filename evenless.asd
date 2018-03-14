@@ -1,10 +1,11 @@
 ;;;; evenless.asd
 
 (asdf:defsystem #:evenless
-  :description "Describe evenless here"
-  :author "Your Name <your.name@example.com>"
+  :description "Evenless is frontend to the notmuch MUA."
+  :author "Moritz Schönherr <moritz.schoenherr@posteo.net>"
   :license  "Specify license here"
   :version "0.0.1"
   :serial t
   :components ((:file "package")
-               (:file "evenless")))
+               (:file "evenless"))
+  :depends-on ("mcclim" "clim-listener"))

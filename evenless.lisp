@@ -36,3 +36,12 @@ executes the body." ; possibly allow definition of functions of arity 0
 
 (define-nm-command show (result) ; to be written
   (princ result))
+
+(define-application-frame evenless-app ()
+  ()
+  (:panes
+   (interactor :interactor
+	       :height 400
+	       :width 600))
+  (:layouts
+   (default-layout interactor)))

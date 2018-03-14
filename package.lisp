@@ -1,4 +1,4 @@
 ;;;; package.lisp
 
 (defpackage #:evenless
-  (:use #:cl))
+  (:use #:cl #:clim #:clim-lisp))
