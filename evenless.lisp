@@ -39,6 +39,7 @@ executes the body." ; possibly allow definition of functions of arity 0
 
 (define-application-frame evenless ()
   ((search-results :initform nil :accessor search-results))
+  (:pointer-documentation t)
   (:panes
    (search-results :application
 		   :display-function 'display-search-results
@@ -59,3 +60,7 @@ executes the body." ; possibly allow definition of functions of arity 0
 
 (define-evenless-command (search-mail :name t) ((search-string 'string))
   (setf (search-results *application-frame*) (nm-search search-string)))
+
+(defun main ()
+  "Starts the evenless MUA."
+  (run-frame-top-level (make-application-frame 'evenless)))
